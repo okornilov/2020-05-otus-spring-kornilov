@@ -23,7 +23,7 @@ class QuestionServiceImplTest {
     @Mock
     private QuestionDao questionDao;
 
-    @DisplayName("Получть список вопросов")
+    @DisplayName("Получить список вопросов")
     @Test
     void getAll() {
         final Question question = Question.builder()

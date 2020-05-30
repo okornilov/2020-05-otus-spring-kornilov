@@ -9,26 +9,31 @@ import org.mockito.junit.jupiter.MockitoExtension;
 import ru.otus.questionnaire.domain.Question;
 import ru.otus.questionnaire.domain.QuestionType;
 
+import java.io.ByteArrayOutputStream;
 import java.util.Collections;
 
-@DisplayName("Тестирование ConsoleService")
+import static org.assertj.core.api.Assertions.assertThat;
+
+@DisplayName("Тестирование QuestionsPrinterService")
 @ExtendWith(MockitoExtension.class)
-class ConsoleServiceImplTest {
+class QuestionsPrinterServiceTest {
 
     @Mock
     private QuestionService questionService;
 
     @DisplayName("Вывести список вопросов")
     @Test
-    void printQuestions() {
+    void print() {
         Mockito.when(questionService.getAll())
                 .thenReturn(Collections.singletonList(Question.builder()
                         .type(QuestionType.FREE)
                         .text("My question text")
                         .build()));
-        ConsoleService consoleService = new ConsoleServiceImpl(questionService);
-        consoleService.printQuestions();
 
-        Mockito.verify(questionService).getAll();
+        final ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+        IOService printerService = new QuestionsPrinterService(questionService);
+        printerService.print(byteArrayOutputStream);
+
+        assertThat(byteArrayOutputStream.toString()).contains("My question text");
     }
 }

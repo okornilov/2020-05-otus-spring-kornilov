@@ -4,7 +4,7 @@ import lombok.RequiredArgsConstructor;
 import ru.otus.questionnaire.domain.Answer;
 import ru.otus.questionnaire.domain.Question;
 import ru.otus.questionnaire.domain.QuestionType;
-import ru.otus.questionnaire.service.CSVService;
+import ru.otus.questionnaire.util.CSVReader;
 
 import java.util.Arrays;
 import java.util.List;
@@ -14,10 +14,13 @@ import java.util.stream.Collectors;
 public class QuestionDaoImpl implements QuestionDao {
 
     private final static String SPLITTER = ";";
-    private final CSVService csvService;
+    private final CSVReader csvReader;
 
     public List<Question> findAll() {
-        return csvService.load().stream().map(this::parseLine).collect(Collectors.toList());
+        final List<String> stringList = csvReader.load();
+        return stringList.stream()
+                .map(this::parseLine)
+                .collect(Collectors.toList());
     }
 
     private Question parseLine(String line) {

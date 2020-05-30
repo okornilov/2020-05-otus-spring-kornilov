@@ -4,19 +4,19 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="csvService" class="ru.otus.questionnaire.service.CSVServiceImpl">
-        <property name="fileName" value="/questions.csv"/>
+    <bean name="csvReader" class="ru.otus.questionnaire.util.CSVReader">
+        <constructor-arg name="fileName" value="/questions.csv"/>
     </bean>
 
     <bean id="questionDao" class="ru.otus.questionnaire.dao.QuestionDaoImpl">
-        <constructor-arg name="csvService" ref="csvService"/>
+        <constructor-arg name="csvReader" ref="csvReader"/>
     </bean>
 
     <bean id="questionService" class="ru.otus.questionnaire.service.QuestionServiceImpl">
         <constructor-arg name="questionDao" ref="questionDao"/>
     </bean>
 
-    <bean id="consoleService" class="ru.otus.questionnaire.service.ConsoleServiceImpl">
+    <bean id="questionsPrinterService" class="ru.otus.questionnaire.service.QuestionsPrinterService">
         <constructor-arg name="questionService" ref="questionService"/>
     </bean>
 
