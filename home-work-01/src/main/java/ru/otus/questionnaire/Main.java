@@ -1,14 +1,14 @@
 package ru.otus.questionnaire;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import ru.otus.questionnaire.service.ConsoleService;
+import ru.otus.questionnaire.service.IOService;
 
 public class Main {
 
     public static void main(String[] args) {
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("/spring-context.xml");
-        ConsoleService consoleService = context.getBean(ConsoleService.class);
-        consoleService.printQuestions();
+        final IOService ioService = context.getBean(IOService.class);
+        ioService.print(System.out);
     }
 
 }

@@ -1,5 +1,5 @@
-Na chem k nam priletayut inoplanetyane?;0;2;Miska;Taz;Tarelka;Vaza
-S pomoshch'yu kakogo cvetka devushki obychno vyyasnyayut, lyubyat ih ili net?;0;3;Mat'-i-machekha;Nezabudka;Vasilek;Romashka
-Kak nazyvaetsya detskaya igrushka-nevalyashka?;0;1;Dyad'ka-Syad'ka;Van'ka-Vstan'ka;Min'ka-Kin'ka;Letka-Enka
-Skol'ko serdec u os'minoga?;0;2;Odno;Dva;Tri;CHetyre
-Srednee rasstoyanie ot Zemli do kakogo nebesnogo tela nazvali astronomicheskoj edinicej?;0;1;Luna;Solnce;Mars;Al'fa
+Which of the following is true about protected access modifier?;0;2;Variables, methods and constructors which are declared protected can be accessed by any class.;Variables, methods and constructors which are declared protected can be accessed by any class lying in same package.;Variables, methods and constructors which are declared protected in the superclass can be accessed only by its child class.;None of the above.
+In which case, a program is not expected to recover?;0;0;If an error occurs.;If an exception occurs.;Both of the above.;None of the above.
+What is the size of char variable?;0;0;8 bit;16 bit;32 bit;64 bit
+A class always has a default constructor.;0;0;True;False
+This is the parent of Error and Exception classes.;0;0;Throwable;Catchable;MainError;MainException
