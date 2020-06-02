@@ -22,7 +22,7 @@ public class CSVReader {
         if (lineList == null) {
             final InputStream is = this.getClass().getResourceAsStream(fileName);
             try (BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(is))) {
-                return bufferedReader.lines().collect(Collectors.toList());
+                lineList = bufferedReader.lines().collect(Collectors.toList());
             } catch (IOException e) {
                 return Collections.emptyList();
             }
