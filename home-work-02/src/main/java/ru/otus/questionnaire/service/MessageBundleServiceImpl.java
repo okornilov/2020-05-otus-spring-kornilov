@@ -10,20 +10,20 @@ import java.util.Locale;
 public class MessageBundleServiceImpl implements MessageBundleService {
 
     private final MessageSource messageSource;
-    private final String locale;
+    private final Locale locale;
 
     public MessageBundleServiceImpl(MessageSource messageSource, @Value("${locale:en}") String locale) {
         this.messageSource = messageSource;
-        this.locale = locale;
+        this.locale = new Locale(locale);
     }
 
     @Override
     public String getMessage(String key) {
-        return messageSource.getMessage(key, new Object[]{}, new Locale(locale));
+        return messageSource.getMessage(key, new Object[]{}, locale);
     }
 
     @Override
     public String getMessage(String key, Object... args) {
-        return messageSource.getMessage(key, args, new Locale(locale));
+        return messageSource.getMessage(key, args, locale);
     }
 }

@@ -12,7 +12,8 @@ class CSVReaderTest {
     @DisplayName("Загрузка csv файла")
     @Test
     void load() {
-        final List<String> stringList = CSVReader.load("/questions-test.csv");
+        CSVReader csvReader = new CSVReader();
+        List<String> stringList = csvReader.load("/questions-test.csv");
         Assertions.assertThat(stringList)
                 .isNotEmpty()
                 .asList()
