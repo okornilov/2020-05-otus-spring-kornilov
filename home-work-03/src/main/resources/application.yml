@@ -1,0 +1,10 @@
+spring:
+  messages:
+    basename: messages
+questions:
+  file-name: /questions_${locale}.csv
+  required-correct-answer-percent: 50
+locale: en
+
+application:
+  version: @project.version@
