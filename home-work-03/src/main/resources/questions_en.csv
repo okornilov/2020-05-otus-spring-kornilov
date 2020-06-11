@@ -1,0 +1,5 @@
+Which of the following is true about protected access modifier?;2;Variables, methods and constructors which are declared protected can be accessed by any class.;Variables, methods and constructors which are declared protected can be accessed by any class lying in same package.;Variables, methods and constructors which are declared protected in the superclass can be accessed only by its child class.;None of the above.
+In which case, a program is not expected to recover?;1;If an error occurs.;If an exception occurs.;Both of the above.;None of the above.
+What is the size of char variable?;2;8 bit;16 bit;32 bit;64 bit
+A class always has a default constructor.;2;True;False
+This is the parent of Error and Exception classes.;1;Throwable;Catchable;MainError;MainException
