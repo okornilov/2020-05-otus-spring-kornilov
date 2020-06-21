@@ -1,0 +1,6 @@
+questions:
+  file-name: /questions-test.csv
+spring:
+  shell:
+    interactive:
+      enabled: false
