@@ -1,0 +1,13 @@
+spring:
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+  datasource:
+    url: jdbc:h2:mem:librarydb
+  h2:
+    console:
+      path: /h2-console
+      enabled: true
+  messages:
+    basename: messages
+locale: ru
