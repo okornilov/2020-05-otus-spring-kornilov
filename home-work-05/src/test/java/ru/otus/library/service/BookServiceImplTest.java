@@ -4,12 +4,10 @@ import de.vandermeer.asciitable.AsciiTable;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import ru.otus.library.dao.AuthorDao;
 import ru.otus.library.dao.BookDao;
 import ru.otus.library.domain.Author;
 import ru.otus.library.domain.Book;
@@ -17,7 +15,6 @@ import ru.otus.library.domain.Genre;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 

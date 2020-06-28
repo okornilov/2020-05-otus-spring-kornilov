@@ -4,10 +4,7 @@ import de.vandermeer.asciitable.AsciiTable;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.otus.library.dao.GenreDao;
-import ru.otus.library.domain.Author;
 import ru.otus.library.domain.Genre;
-
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
