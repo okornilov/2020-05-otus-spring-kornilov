@@ -35,13 +35,6 @@ public class BookDaoImpl implements BookDao {
         Genre genre = Optional.ofNullable(book.getGenre()).orElse(new Genre());
 
         if (book.getId() == null) {
-            Optional<Book> optionalBook = findByName(book.getName());
-            if (optionalBook.isPresent()) {
-                Book foundBook = optionalBook.get();
-                log.info("Found book id = {} by name = {}", foundBook.getId(), foundBook.getName());
-                return foundBook;
-            }
-
             Author authorForCreate = authorDao.save(author);
             Genre genreForCreate = genreDao.save(genre);
 

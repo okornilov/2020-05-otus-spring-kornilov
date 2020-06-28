@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.JdbcTest;
 import org.springframework.context.annotation.Import;
-import org.springframework.transaction.annotation.Transactional;
 import ru.otus.library.domain.Genre;
 import ru.otus.library.exceptions.EntityNotFound;
 
@@ -16,7 +15,6 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @DisplayName("Тестирование GenreDaoImpl")
 @JdbcTest
-@Transactional
 @Import(TestDaoConfiguration.class)
 class GenreDaoImplTest {
 
