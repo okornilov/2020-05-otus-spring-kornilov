@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="2020-06-24--0001-author-data" author="okornilov">
+        <loadUpdateData
+                tableName="author"
+                primaryKey="id"
+                separator=";"
+                file="/db/changelog/0.0.1/data/2020-06-24--0001-authors.csv">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet id="2020-06-24--0002-genre-data" author="okornilov">
+        <loadUpdateData
+                tableName="genre"
+                primaryKey="id"
+                separator=";"
+                file="/db/changelog/0.0.1/data/2020-06-24--0002-genre.csv">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet id="2020-06-24--0003-book-data" author="okornilov">
+        <loadUpdateData
+                tableName="book"
+                primaryKey="id"
+                separator=";"
+                file="/db/changelog/0.0.1/data/2020-06-24--0003-book.csv">
+        </loadUpdateData>
+    </changeSet>
+
+</databaseChangeLog>
