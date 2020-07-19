@@ -1,0 +1,14 @@
+spring:
+  messages:
+    basename: messages
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: library
+  mongock: # mongock не работает со spring-shell
+    change-logs-scan-package:
+      - ru.otus.library.changelogs
+    enabled: true
+
+locale: ru
