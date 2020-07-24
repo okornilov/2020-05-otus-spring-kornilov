@@ -15,7 +15,7 @@ import java.util.UUID;
 @ChangeLog(order = "001")
 public class InitMongoDBDataChangeLog {
 
-    @ChangeSet(order = "001", id = "dropDB", author = "stvort", runAlways = true)
+    @ChangeSet(order = "001", id = "dropDB", author = "okornilov", runAlways = true)
     public void dropDB(MongoDatabase database){
         database.drop();
     }

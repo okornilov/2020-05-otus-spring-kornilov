@@ -10,6 +10,7 @@ import org.springframework.data.mongodb.core.aggregation.*;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.data.mongodb.core.query.Update;
+import org.springframework.stereotype.Repository;
 import ru.otus.library.domain.Book;
 import ru.otus.library.domain.Identifiable;
 import ru.otus.library.dto.CountDto;
@@ -21,8 +22,9 @@ import java.util.UUID;
 
 import static org.springframework.data.mongodb.core.aggregation.Aggregation.*;
 
+@Repository
 @RequiredArgsConstructor
-public class BookRepositoryCustomImpl implements BookRepositoryCustom {
+public class BookArrayOperations implements ArrayOperations {
     private final MongoTemplate mongoTemplate;
 
     public  <T extends Identifiable> void addArrayElement(@NonNull String bookId, T element, String arrayName) {
@@ -40,7 +42,7 @@ public class BookRepositoryCustomImpl implements BookRepositoryCustom {
         this.mongoTemplate.updateMulti(new Query(), update, Book.class);
     }
 
-    public  <T> Page<T> findElementsByArrayName(String arrayName, String bookId, Pageable pageable, Class<T> tClass) {
+    public  <T> Page<T> findElementsByArrayName(String arrayName, String bookId, Pageable pageable, Class<T> dtoClass) {
         final UnwindOperation unwind = unwind(arrayName);
         final AddFieldsOperation addFields = addFields().addFieldWithValue(arrayName + ".bookId", "$_id")
                 .addFieldWithValue(arrayName + ".bookName", "$name")
@@ -62,7 +64,7 @@ public class BookRepositoryCustomImpl implements BookRepositoryCustom {
 
         final CountDto countDto = Optional.ofNullable(mongoTemplate.aggregate(aggregationCount, Book.class, CountDto.class)
                 .getUniqueMappedResult()).orElse(new CountDto(0L));
-        final List<T> resultList = this.mongoTemplate.aggregate(aggregation, Book.class, tClass).getMappedResults();
+        final List<T> resultList = this.mongoTemplate.aggregate(aggregation, Book.class, dtoClass).getMappedResults();
 
         return new PageImpl<>(resultList, pageable, countDto.getTotal());
     }

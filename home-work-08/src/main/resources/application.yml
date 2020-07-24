@@ -6,9 +6,10 @@ spring:
       host: localhost
       port: 27017
       database: library
-  mongock: # mongock не работает со spring-shell
+  mongock:
     change-logs-scan-package:
       - ru.otus.library.changelogs
     enabled: true
+    runner-type: InitializingBean
 
 locale: ru
