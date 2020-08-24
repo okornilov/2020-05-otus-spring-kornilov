@@ -1,0 +1,14 @@
+spring:
+  messages:
+    basename: messages
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: library
+  mongock:
+    change-logs-scan-package:
+      - ru.otus.library.changelogs
+    enabled: true
+    runner-type: InitializingBean
+locale: ru
