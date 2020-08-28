@@ -1,0 +1,16 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 0
+      database: library
+  messages:
+    basename: messages
+  mongock:
+    change-logs-scan-package:
+      - ru.otus.library.changelogs
+    enabled: true
+  mongodb:
+    embedded:
+      version: 4.0.2
+locale: ru

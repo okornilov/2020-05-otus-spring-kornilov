@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<body>
+<div th:insert="header :: nav"></div>
+<div class="container">
+    <!-- Content here -->
+    <h1 th:text="#{genre.list}" class="mt-3">List of genres</h1>
+    <div class="flex-row mt-3 mb-3">
+        <a th:href="@{/genre(bookId=${bookId})}" class="btn btn-primary" role="button" th:text="#{btn.add}">Add</a>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th scope="col" th:text="#{genre.id}">ID</th>
+            <th scope="col" th:text="#{genre.name}">Name</th>
+            <th scope="col" th:text="#{actions}">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="genre : ${page.content}">
+            <th th:text="${genre.id}" scope="row">1</th>
+            <td th:text="${genre.name}">Name</td>
+            <td>
+                <div class="btn-group btn-group-sm" role="group" aria-label="...">
+                    <a class="btn btn-info btn-sm" th:href="@{/genre(bookId=${bookId},id=${genre.id})}" th:text="#{btn.edit}">Edit</a>
+                    <form th:method="post" th:action="@{/genre-delete(bookId=${bookId},id=${genre.id})}">
+                        <button type="submit" class="btn btn-danger btn-sm" th:text="#{btn.delete}">Delete</button>
+                    </form>
+                </div>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <nav aria-label="Page navigation">
+        <ul class="pagination" th:if="${page.totalPages > 0}">
+            <li th:class="${pageNumber==page.number + 1} ? 'page-item active' : 'page-item'" th:each="pageNumber : ${pageNumbers}">
+                <a class="page-link" th:text="${pageNumber}" th:href="@{/genres(bookId=${bookId},page=${pageNumber},size=${page.size})}">1</a>
+            </li>
+        </ul>
+    </nav>
+</div>
+<div th:insert="footer :: bootstrap-js"></div>
+</body>
+</html>

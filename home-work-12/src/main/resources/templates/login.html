@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header :: head"></head>
+<body>
+<div th:insert="header :: nav"></div>
+<div class="container">
+    <div class="card mt-5">
+        <div class="card-header" th:text="#{auth.authorization}"></div>
+        <div class="card-body">
+            <div class="alert alert-danger" role="alert" th:text="#{auth.failure-message}" th:if="${error}"></div>
+            <div class="alert alert-primary" role="alert" th:text="#{auth.logout-message}" th:if="${logout}"></div>
+            <form  method="post" th:action="@{/login}">
+                <div class="form-group">
+                    <label for="exampleInputEmail1" th:text="#{auth.username}">User name</label>
+                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputPassword1" th:text="#{auth.password}">Password</label>
+                    <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                </div>
+                <div class="form-group form-check">
+                    <input type="checkbox" class="form-check-input" id="exampleCheck1" name="remember-me">
+                    <label class="form-check-label" for="exampleCheck1" th:text="#{auth.remember-me}">Check me out</label>
+                </div>
+                <button type="submit" class="btn btn-primary" th:text="#{auth.signin}">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+<div th:insert="footer :: bootstrap-js"></div>
+</body>
+</html>
