@@ -16,3 +16,4 @@
 - [home-work-09](https://github.com/okornilov/2020-05-otus-spring-kornilov/tree/master/home-work-09)
 - [home-work-10](https://github.com/okornilov/2020-05-otus-spring-kornilov/tree/master/home-work-10)
 - [home-work-11](https://github.com/okornilov/2020-05-otus-spring-kornilov/tree/master/home-work-11)
+- [home-work-12](https://github.com/okornilov/2020-05-otus-spring-kornilov/tree/master/home-work-12)
