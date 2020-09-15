@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+
+    <changeSet id="2020-09-14--0001-authors-data" author="okornilov">
+        <loadUpdateData
+                tableName="authors"
+                primaryKey="id"
+                separator=";"
+                file="/db/changelog/0.0.1/data/2020-09-14--0001-authors.csv">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet id="2020-09-14--0002-books-data" author="okornilov">
+        <loadUpdateData
+                tableName="books"
+                primaryKey="id"
+                separator=";"
+                file="/db/changelog/0.0.1/data/2020-09-14--0002-books.csv">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet id="2020-09-14--0003-users-data" author="okornilov">
+        <loadUpdateData
+                tableName="users"
+                primaryKey="login"
+                separator=";"
+                file="/db/changelog/0.0.1/data/2020-09-14--0003-users.csv">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet id="2020-09-14--0004-authorities-data" author="okornilov">
+        <loadUpdateData
+                tableName="authorities"
+                primaryKey="id"
+                separator=";"
+                file="/db/changelog/0.0.1/data/2020-09-14--0004-authorities.csv">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet id="2020-09-14--0005-acl-sid" author="okornilov">
+        <loadUpdateData
+                tableName="acl_sid"
+                primaryKey="id"
+                separator=";"
+                file="/db/changelog/0.0.1/data/2020-09-14--0005-acl-sid.csv">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet id="2020-09-14--0006-acl-class" author="okornilov">
+        <loadUpdateData
+                tableName="acl_class"
+                primaryKey="id"
+                separator=";"
+                file="/db/changelog/0.0.1/data/2020-09-14--0006-acl-class.csv">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet id="2020-09-14--0007-acl-object_identity" author="okornilov">
+        <loadUpdateData
+                tableName="acl_object_identity"
+                primaryKey="id"
+                separator=";"
+                file="/db/changelog/0.0.1/data/2020-09-14--0007-acl-object_identity.csv">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet id="2020-09-14--0008-acl-entry" author="okornilov">
+        <loadUpdateData
+                tableName="acl_entry"
+                primaryKey="id"
+                separator=";"
+                file="/db/changelog/0.0.1/data/2020-09-14--0008-acl_entry.csv">
+        </loadUpdateData>
+    </changeSet>
+
+</databaseChangeLog>

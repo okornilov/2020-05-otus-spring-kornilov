@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="2020-09-14--0001-books" author="okornilov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="books"/>
+            </not>
+        </preConditions>
+        <createTable tableName="books">
+            <column name="id" type="bigint" remarks="Идентификатор книги" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_books"/>
+            </column>
+            <column name="name" type="varchar(255)" remarks="Наименование книги">
+                <constraints nullable="false"/>
+            </column>
+            <column name="author_id" type="bigint" remarks="Идентификатор автора">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2020-09-14--0002-authors" author="okornilov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="authors"/>
+            </not>
+        </preConditions>
+        <createTable tableName="authors">
+            <column name="id" type="bigint" remarks="Идентификатор автора" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_authors"/>
+            </column>
+            <column name="full_name" type="varchar(255)" remarks="ФИО автора">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2020-09-14--0003-users" author="okornilov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="users"/>
+            </not>
+        </preConditions>
+        <createTable tableName="users">
+            <column name="login" type="varchar(100)" remarks="Логин пользователя" autoIncrement="false">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_users"/>
+            </column>
+            <column name="password" type="varchar(100)" remarks="Пароль пользователя">
+                <constraints nullable="false"/>
+            </column>
+            <column name="expired" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column name="locked" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+            <column name="enabled" type="boolean">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2020-09-14--0004-authorities" author="okornilov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="authorities"/>
+            </not>
+        </preConditions>
+        <createTable tableName="authorities">
+            <column name="id" type="bigint"  autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_authorities"/>
+            </column>
+            <column name="authority" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="user_login" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2020-09-14--0005-book-author-fk" author="okornilov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="fk-book-author"/>
+            </not>
+        </preConditions>
+
+        <addForeignKeyConstraint baseTableName="books" baseColumnNames="author_id" constraintName="fk-book-author"
+                                 referencedTableName="authors"
+                                 referencedColumnNames="id" onDelete="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="2020-09-14--0006-user-authority-fk" author="okornilov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="fk-user-authority"/>
+            </not>
+        </preConditions>
+
+        <addForeignKeyConstraint baseTableName="authorities" baseColumnNames="user_login" constraintName="fk-user-authority"
+                                 referencedTableName="users"
+                                 referencedColumnNames="login" onDelete="CASCADE"/>
+    </changeSet>
+
+</databaseChangeLog>

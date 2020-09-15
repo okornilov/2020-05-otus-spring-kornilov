@@ -1,0 +1,7 @@
+id;authority;user_login
+1;ROLE_USER;user
+2;ROLE_USER;admin
+3;ROLE_ADMIN;admin
+4;WRITE;admin
+5;READ;admin
+6;READ;user
