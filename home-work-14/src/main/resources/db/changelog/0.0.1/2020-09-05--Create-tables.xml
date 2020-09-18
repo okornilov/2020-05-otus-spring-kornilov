@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd">
+
+    <changeSet id="2020-09-05--0001-books" author="okornilov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="books"/>
+            </not>
+        </preConditions>
+        <createTable tableName="books">
+            <column name="id" type="bigint" remarks="Идентификатор книги" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_books"/>
+            </column>
+            <column name="name" type="varchar(255)" remarks="Наименование книги">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2020-09-05--0002-authors" author="okornilov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="authors"/>
+            </not>
+        </preConditions>
+        <createTable tableName="authors">
+            <column name="id" type="bigint" remarks="Идентификатор автора" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_authors"/>
+            </column>
+            <column name="full_name" type="varchar(255)" remarks="ФИО автора">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2020-09-05--0003-book-authors" author="okornilov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="book_authors"/>
+            </not>
+        </preConditions>
+        <createTable tableName="book_authors">
+            <column name="id" type="bigint" remarks="Идентификатор" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_book_authors"/>
+            </column>
+            <column name="book_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="author_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2020-09-05--0004-genres" author="okornilov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="genres"/>
+            </not>
+        </preConditions>
+        <createTable tableName="genres">
+            <column name="id" type="bigint" remarks="Идентификатор жанра" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_genre"/>
+            </column>
+            <column name="name" type="varchar(255)" remarks="Наименование жанра">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2020-09-05--0005-book-genres" author="okornilov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="book_genres"/>
+            </not>
+        </preConditions>
+        <createTable tableName="book_genres">
+            <column name="id" type="bigint" remarks="Идентификатор" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="pk_book_genres"/>
+            </column>
+            <column name="book_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+            <column name="genre_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="2020-09-05--0006-author-book-fk" author="okornilov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="fk-author-book"/>
+            </not>
+        </preConditions>
+
+        <addForeignKeyConstraint baseTableName="book_authors" baseColumnNames="book_id" constraintName="fk-author-book"
+                                 referencedTableName="books"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="2020-09-05--0007-genre-book-fk" author="okornilov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="fk-genre-book"/>
+            </not>
+        </preConditions>
+
+        <addForeignKeyConstraint baseTableName="book_genres" baseColumnNames="book_id" constraintName="fk-genre-genre"
+                                 referencedTableName="books"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="2020-09-05--0008-book-author-fk" author="okornilov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="fk-book-author"/>
+            </not>
+        </preConditions>
+
+        <addForeignKeyConstraint baseTableName="book_authors" baseColumnNames="author_id" constraintName="fk-book-author"
+                                 referencedTableName="authors"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+    <changeSet id="2020-09-05--0009-book-genre-fk" author="okornilov">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <foreignKeyConstraintExists foreignKeyName="fk-book-genre"/>
+            </not>
+        </preConditions>
+
+        <addForeignKeyConstraint baseTableName="book_genres" baseColumnNames="genre_id" constraintName="fk-book-genre"
+                                 referencedTableName="genres"
+                                 referencedColumnNames="id"/>
+    </changeSet>
+
+</databaseChangeLog>
