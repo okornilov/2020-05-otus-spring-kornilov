@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <books id="1" name="TestBook"/>
+    <books id="2" name="TestBook2"/>
+
+    <authors id="1" full_name="Petrov1"/>
+    <authors id="2" full_name="Ivanov1"/>
+    <authors id="3" full_name="Petrov2"/>
+    <authors id="4" full_name="Ivanov2"/>
+
+    <genres id="1" name="Genre1"/>
+    <genres id="2" name="Genre2"/>
+    <genres id="3" name="Genre3"/>
+    <genres id="4" name="Genre4"/>
+
+    <book_authors id="1" book_id="1" author_id="1"/>
+    <book_authors id="2" book_id="1" author_id="2"/>
+    <book_authors id="3" book_id="2" author_id="3"/>
+    <book_authors id="4" book_id="2" author_id="4"/>
+
+    <book_genres id="1" book_id="1" genre_id="1"/>
+    <book_genres id="2" book_id="1" genre_id="2"/>
+    <book_genres id="3" book_id="2" genre_id="3"/>
+    <book_genres id="4" book_id="2" genre_id="4"/>
+</dataset>
