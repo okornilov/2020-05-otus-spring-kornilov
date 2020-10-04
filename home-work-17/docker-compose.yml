@@ -1,0 +1,23 @@
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    privileged: true
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_HOST=mongo
+      - DB_PORT=27017
+      - DB_NAME=library
+    networks:
+      - nw
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    networks:
+      - nw
+networks:
+  nw:
