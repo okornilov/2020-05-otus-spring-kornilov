@@ -1,0 +1,28 @@
+spring:
+  data:
+    rest:
+      base-path: /datarest
+    mongodb:
+      host: localhost
+      port: 27017
+      database: library
+mongock:
+  change-logs-scan-package:
+    - ru.otus.library.changelogs
+  enabled: true
+  runner-type: InitializingBean
+
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: health,logfile
+
+logging:
+  file:
+    name: log.txt
+  level:
+    root: info
