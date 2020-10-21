@@ -1,0 +1,49 @@
+version: '3'
+services:
+  discovery:
+    build:
+      context: .
+      dockerfile: ./discovery/Dockerfile
+    ports:
+      - "8761:8761"
+    environment:
+      - DISCOVERY_PORT=8761
+    networks:
+      - nw
+  hystrix-dashboard:
+    build:
+      context: .
+      dockerfile: ./hystrix-dashboard/Dockerfile
+    ports:
+      - "8788:8788"
+    environment:
+      - EUREKA_URL=http://discovery:8761/eureka
+    networks:
+      - nw
+    depends_on:
+      - discovery
+  library:
+    build:
+      context: .
+      dockerfile: ./library/Dockerfile
+    ports:
+      - "8080:8080"
+    environment:
+      - DB_HOST=mongo
+      - DB_PORT=27017
+      - DB_NAME=library
+      - EUREKA_URL=http://discovery:8761/eureka
+    networks:
+      - nw
+    depends_on:
+      - discovery
+      - mongo
+      - hystrix-dashboard
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    networks:
+      - nw
+networks:
+  nw:

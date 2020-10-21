@@ -1,0 +1,24 @@
+spring:
+  data:
+    mongodb:
+      host: localhost
+      port: 0
+      database: library
+  shell:
+    interactive:
+      enabled: false
+  messages:
+    basename: messages
+  mongodb:
+    embedded:
+      version: 4.0.2
+mongock:
+  enabled: false
+
+eureka:
+  client:
+    fetch-registry: false
+    register-with-eureka: false
+    service-url:
+      defaultZone:
+    enabled: false
